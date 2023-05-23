@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="news_light_blue">#16AFE4</color>
+    <color name="news_green">#088308</color>
 </resources>
