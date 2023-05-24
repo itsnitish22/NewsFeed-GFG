@@ -10,20 +10,24 @@ import com.nitishsharma.newsfeed.api.models.News
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-const val TAG_HOME_VM = "HOME_FRAG_VM"
-
 class HomeViewModel : ViewModel() {
     private val _fetchedNews: MutableLiveData<News> = MutableLiveData()
     val fetchedNews: LiveData<News>
         get() = _fetchedNews
 
+    private val _isLoading: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     fun getNews() {
         viewModelScope.launch {
             try {
-                val response = RetrofitInstance.api.getNews()
-                _fetchedNews.postValue(response.body())
+                _isLoading.postValue(true) //post loading status
+                val response = RetrofitInstance.api.getNewNews() //fetch news from api
+                _fetchedNews.postValue(response.body()) //post news
+                _isLoading.postValue(false) //post loading status
             } catch (e: IOException) {
-                Log.e(TAG_HOME_VM, e.toString())
+                Log.e("HOME_FRAG_VM", e.toString())
             }
         }
     }

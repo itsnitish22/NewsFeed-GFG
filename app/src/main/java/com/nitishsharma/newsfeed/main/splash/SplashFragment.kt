@@ -1,10 +1,12 @@
 package com.nitishsharma.newsfeed.main.splash
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.nitishsharma.newsfeed.R
 
 class SplashFragment : Fragment() {
@@ -20,6 +22,10 @@ class SplashFragment : Fragment() {
         navigateToHomeFragment()
     }
 
+    //navigate to home screen in 2.5 secs
     private fun navigateToHomeFragment() {
+        Handler().postDelayed({
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+        }, 2500)
     }
 }

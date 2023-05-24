@@ -8,7 +8,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 const val BASE_URL = "https://api.rss2json.com/"
 
 object RetrofitInstance {
-    //interceptors
     var loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     var clientBuilder: OkHttpClient.Builder = OkHttpClient.Builder().addInterceptor(
         loggingInterceptor

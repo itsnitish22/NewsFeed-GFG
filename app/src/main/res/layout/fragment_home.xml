@@ -12,16 +12,15 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:titleTextColor="@color/news_green"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="News Feed" />
+        app:title="News Feed"
+        app:titleTextColor="@color/news_green" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,8 +30,21 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" />
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            app:layout_constraintVertical_bias="0.5" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/news_green"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

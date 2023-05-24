@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="news_light_blue">#16AFE4</color>
     <color name="news_green">#088308</color>
+    <color name="transparent">#4D000000</color>
 </resources>
