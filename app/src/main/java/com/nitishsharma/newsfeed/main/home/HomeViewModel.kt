@@ -19,6 +19,10 @@ class HomeViewModel : ViewModel() {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    private val _errorMsg: MutableLiveData<String?> = MutableLiveData(null)
+    val errorMsg: LiveData<String?>
+        get() = _errorMsg
+
     fun getNews() {
         viewModelScope.launch {
             try {
@@ -27,6 +31,8 @@ class HomeViewModel : ViewModel() {
                 _fetchedNews.postValue(response.body()) //post news
                 _isLoading.postValue(false) //post loading status
             } catch (e: IOException) {
+                _isLoading.postValue(false)
+                _errorMsg.postValue(e.toString())
                 Log.e("HOME_FRAG_VM", e.toString())
             }
         }

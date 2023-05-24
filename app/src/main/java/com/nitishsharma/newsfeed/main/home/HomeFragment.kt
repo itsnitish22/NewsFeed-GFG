@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nitishsharma.newsfeed.api.models.Item
 import com.nitishsharma.newsfeed.databinding.FragmentHomeBinding
+import com.nitishsharma.newsfeed.main.utils.Utility.toast
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -54,6 +55,12 @@ class HomeFragment : Fragment() {
         homeVM.isLoading.observe(requireActivity(), Observer {//observer for loading
             binding.progressBar.visibility =
                 if (it) View.VISIBLE else View.GONE //if loading is true, make progress bar visible, else hide it
+        })
+        homeVM.errorMsg.observe(requireActivity(), Observer { errorMsg ->
+            errorMsg?.let {
+                binding.progressBar.visibility = View.GONE
+                toast(it)
+            }
         })
     }
 

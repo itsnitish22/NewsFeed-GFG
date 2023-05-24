@@ -1,7 +1,10 @@
 package com.nitishsharma.newsfeed.main.utils
 
+import android.content.Context
 import android.os.Build
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -15,5 +18,16 @@ object Utility {
         val parsedDate = LocalDateTime.parse(dateTime, inputFormatter)
 
         return parsedDate.format(outputFormatter)
+    }
+
+    fun Context.toast(message: String) {
+        Toast.makeText(
+            this, message,
+            if (message.length <= 25) Toast.LENGTH_SHORT else Toast.LENGTH_LONG
+        ).show()
+    }
+
+    fun Fragment.toast(msg: String) {
+        requireContext().toast(msg)
     }
 }
