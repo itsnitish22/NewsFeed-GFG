@@ -58,7 +58,11 @@ class HomeFragment : Fragment() {
         })
         homeVM.errorMsg.observe(requireActivity(), Observer { errorMsg ->
             errorMsg?.let {
-                binding.progressBar.visibility = View.GONE
+                with(binding){
+                    if(swipeRefresh.isRefreshing)
+                        swipeRefresh.isRefreshing = false
+                    progressBar.visibility = View.GONE
+                }
                 toast(it)
             }
         })
