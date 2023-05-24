@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
                 if (it) View.VISIBLE else View.GONE //if loading is true, make progress bar visible, else hide it
         })
         homeVM.errorMsg.observe(requireActivity(), Observer { errorMsg ->
-            errorMsg?.let {
+            errorMsg?.let {//toast error msg if errorMsg is not null and stop refreshing, and progress bar
                 with(binding){
                     if(swipeRefresh.isRefreshing)
                         swipeRefresh.isRefreshing = false
